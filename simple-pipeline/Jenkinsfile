@@ -23,13 +23,13 @@ pipeline {
             }
         }
 
-        steage('stage 2') {
+        stage('stage 2') {
           steps {
             sh 'echo hello from stage 2!'
           }
         }
 
-        steage('manual approval') {
+        stage('manual approval') {
           steps {
             timeout(time: 60, unit: 'MINUTES') {
               input message: "Move to stage 3?"

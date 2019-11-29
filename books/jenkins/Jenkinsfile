@@ -14,7 +14,7 @@ pipeline {
         DEV_PROJECT = "stevehui-books-dev"
         STAGE_PROJECT = "stevehui-books-stage"
         APP_GIT_URL = "https://github.com/stevehui/DO288-apps"
-        NEXUS_SERVER = "nexus-common.apps.ocp-na1.prod.nextcle.com/repository/nodejs"
+        NEXUS_SERVER = "http://nexus-common.apps.ocp-na1.prod.nextcle.com/repository/nodejs"
 
         // DO NOT CHANGE THE GLOBAL VARS BELOW THIS LINE
         APP_NAME = "books"
@@ -63,6 +63,7 @@ pipeline {
                         oc project ${DEV_PROJECT}
                         oc new-app --name books nodejs:8~${APP_GIT_URL} --build-env npm_config_registry=${NEXUS_SERVER} --context-dir ${APP_NAME}
                         oc expose svc/${APP_NAME}
+                   '''
             }
         }
 
